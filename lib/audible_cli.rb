@@ -1,6 +1,2 @@
-require "audible_cli/version"
-
-module AudibleCli
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./audible_cli/version"
+require_relative './audible_cli/cli'
