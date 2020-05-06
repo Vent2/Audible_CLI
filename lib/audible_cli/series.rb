@@ -1,14 +1,8 @@
 class AudibleCli::Series
     attr_accessor :name, :author, :summary, :url
+    
     def self.today
-    #should return a bunch of instances of series
-    puts <<-DOC.gsub /^\s*/, '' 
-        Ready to read a great book?
-        Here are a couple of series to get you started:
-        1.Kingkiller Chronicle
-        2.Stormlight Archive
-        3.A Song of Ice and Fire
-    DOC
+        #Scrape Auble and then return the info
 
         series_1 = self.new
         series_1.name = "KingKiller Chronicle"
