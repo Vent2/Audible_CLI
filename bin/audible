@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
-require './lib/audible_cli/'
+require "bundler/setup"
+require "audible_cli"
+
+# require './lib/audible_cli'
 
 AudibleCli::CLI.new.call

@@ -1,0 +1,21 @@
+User goes to the website and gets a list of its top sci-fi aubile books
+html = https://www.audible.com/ep/series-science-fiction-fantasy-epic
+
+
+
+1. Show a list of highly recommended series 
+2. After choosing a series Ill give them a basic summary about series,arthur,etc
+3. all them to choose book 1(if I have time other books in series) and get info on book and price 
+
+
+Series 
+-show the amount of books
+-show books 
+-show price
+-has url
+
+Book
+-show info
+-show author
+-show price
+-has url

@@ -11,12 +11,12 @@ class AudibleCli::CLI
         Ready to read a great book?
         Here are a couple of series to get you started:
         DOC
-        puts <<-DOC.gsub /^\s*/, '' 
-          1.Kingkiller Chronicle
-          2.Stormlight Archive
-          3.A Song of Ice and Fire
-        DOC
-    
+        # puts <<-DOC.gsub /^\s*/, '' 
+        #   1.Kingkiller Chronicle
+        #   2.Stormlight Archive
+        #   3.A Song of Ice and Fire
+        # DOC
+        @series = AudibleCli::Series.today
     end
 
     def menu
