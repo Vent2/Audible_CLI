@@ -1,9 +1,18 @@
 class AudibleCli::Series
-    attr_accessor :name, :author, :summary, :url
-    def home_page
-        Scraper.scrape_first_page
+    attr_accessor :title, :author, :bio, :url
+    @@all = []
+    
+    def initialize(title=nil, author=nil, bio=nil, url=nil)
+        @title = title
+        @author = author
+        @bio = bio
+        @url = url
+        self
     end
 
+    def self.all
+        @@all
+    end
 end
 
 

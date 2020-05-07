@@ -13,9 +13,9 @@ class AudibleCli::CLI
         Here are a couple of series to get you started:
         DOC
 
-        @series = AudibleCli::Series.home_page
+        @series = AudibleCli::Series.initialize
         @series.each.with_index(1) do |series, i|
-          puts "#{i}. #{series.name} - #{series.author} - #{series.summary} - #{series.url} "
+          puts "#{i}. #{series.title} - #{series.bio} - #{series.url} "
         end
     end
 
@@ -27,7 +27,7 @@ class AudibleCli::CLI
         
         if input.to_i > 0
             the_serie = @series[input.to_i-1]
-            puts "#{the_serie.name} - #{the_serie.author} - #{the_serie.summary} - #{the_serie.url}"
+            puts "#{the_serie.title}- #{the_serie.bio} - #{the_serie.url}"
         elsif input == "list"
             list_series
         else 
