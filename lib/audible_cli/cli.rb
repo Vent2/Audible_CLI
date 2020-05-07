@@ -1,8 +1,7 @@
-# require 'pry'
-
 class AudibleCli::CLI
 
     def call
+        AudibleCli::Scraper.scrape_first_page
         list_series
         menu
         goodbye
@@ -12,11 +11,9 @@ class AudibleCli::CLI
         puts <<-DOC.gsub /^\s*/, '' 
         Ready to read a great book?
         Here are a couple of series to get you started:
-        1.Kingkiller Chronicle
-        2.Stormlight Archive
-        3.A Song of Ice and Fire
         DOC
-        @series = AudibleCli::Series.today
+
+        @series = AudibleCli::Series.home_page
         @series.each.with_index(1) do |series, i|
           puts "#{i}. #{series.name} - #{series.author} - #{series.summary} - #{series.url} "
         end

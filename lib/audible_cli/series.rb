@@ -1,6 +1,8 @@
 class AudibleCli::Series
     attr_accessor :name, :author, :summary, :url
-
+    def home_page
+        Scraper.scrape_first_page
+    end
 
 end
 
