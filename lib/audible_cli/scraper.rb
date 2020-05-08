@@ -4,17 +4,18 @@ class AudibleCli::Scraper
     # series << self.scrape_audible
     def self.scrape_first_page
         doc = Nokogiri::HTML(open("https://www.audible.com/ep/series-science-fiction-fantasy-epic"))
-        series_divs = doc.css('div.bc-box-padding-medium')
+        rows_of_three_series = doc.css('.centerSlot')
+        #these are rows of three
+        #the first three or fours rows are garbage 
         # binding.pry
         #that will return an array of elements that are divs that house all of the info for each series 
-        series_divs.each do |serie|
-            new_series = AudibleCli::Series.new 
-            new_series.title = serie.css('h3.bc-heading').text.strip
-            new_series.bio = serie.css('.bc-text').children[1].text.delete('\u').strip #Adding â\u0080\u0099s figure how to remove
-            new_series.url = serie.css('a.bc-link bc-color-link').attr('href')
+        rows_of_three_series.each do |row|
+            # binding.pry
+            urls = row.css('a').map {|series_url_element| series_url_element.attr('href')}
+            titles = row.css('h3').map {|series_title_element| series_title_element.text.strip}
+            AudibleCli::Series.new(url: urls[0], title: titles[0])
             binding.pry
-            
-            #Go to audible, find the series
+            #First 3 times are useless and returns nil after GameOfThrones,Lord,WheelOfTime
         end 
     end
 

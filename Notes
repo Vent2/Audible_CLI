@@ -19,3 +19,11 @@ Book
 -show author
 -show price
 -has url
+
+
+
+            #map takes an array iterates over it and makes a transformation 
+            #[1, 2, 3].map {|num| num * 2} => [2, 4, 6]
+            #[Ele, Ele, Ele].map {|el| el.text} => [Text, Text, Text]
+            #select returns the elements in the array that pass the block ["cheese", "bread", "banana"].select {|food| food[0] == "b"} => ["bread", "banana"]
+            #find returns the first element in the array that passes the block ["cheese", "bread", "banana"].select {|food| food[0] == "b"} => "bread"

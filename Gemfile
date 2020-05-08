@@ -9,3 +9,6 @@ gem 'json'
 gem 'http'
 gem 'require_all'
 gem 'pry'
+
+gem 'colorize'
+gem 'ascii'
