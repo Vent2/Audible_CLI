@@ -2,9 +2,19 @@ class AudibleCli::CLI
 
     def call
         AudibleCli::Scraper.scrape_first_page
-        list_series
-        menu
-        goodbye
+        grab_second_page_url
+        
+        # list_series
+        # menu
+        # goodbye
+    end
+
+    def grab_second_page_url
+      AudibleCli::Series.all.each do |series|
+      # binding.pry
+      AudibleCli::Scraper.second_series(series)
+      # binding.pry
+      end
     end
 
     def list_series

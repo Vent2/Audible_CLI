@@ -1,13 +1,11 @@
 class AudibleCli::Series
-    attr_accessor :title, :author, :bio, :url
+    attr_accessor :url, :title, :summary, :price
     @@all = []
     
-    def initialize(title=nil, author=nil, bio=nil, url=nil)
-        @title = title
-        @author = author
-        @bio = bio
+    def initialize(url=nil, title=nil)
         @url = url
-        self
+        @title = title
+        @@all << self
     end
 
     def self.all
