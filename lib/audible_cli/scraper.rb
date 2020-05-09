@@ -16,12 +16,15 @@ class AudibleCli::Scraper
             #First 3 times are useless and returns nil
         end 
     end
-
+    #ctrl D and ctrl-shift-L to select all the same words to change at once
     def self.second_series(series_obj)
             doc = Nokogiri::HTML(open(series_obj.url))
-            binding.pry
-            # series_obj.summary = doc.css('grab the summary here ')
-            # series_obj.price = doc.css('grab price here')
+            series_obj.title = doc.css('h1.bc-heading').text.strip
+            series_obj.summary = doc.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip
+            #figure how to remove all the \u and \n
+            series_obj.price = doc.css('span.bc-text.bc-size-base.bc-color-base')[1].text.strip
+            # binding.pry
+
     end
 end
 
