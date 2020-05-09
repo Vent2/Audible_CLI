@@ -7,10 +7,12 @@ class AudibleCli::Scraper
         rows_of_three_series = doc.css('.centerSlot')
         #that will return an array of elements that are divs that house all of the info for each series 
         rows_of_three_series[3..].each do |row|
-            urls = row.css('a').map {|series_url_element| series_url_element.attr('href')}
+            # urls = row.css('a').map {|series_url_element| series_url_element.attr('href')}
             titles = row.css('h3').map {|series_title_element| series_title_element.text.strip}
+            urls = row.css('a').map {|series_url_element| series_url_element.attr('href')}
             if titles[0] != nil
-            new_series = AudibleCli::Series.new(url = "https://www.audible.com#{urls[0]}", title = titles[0])
+            new_series = AudibleCli::Series.new(title = titles[0], url = "https://www.audible.com#{urls[0]}")
+            # binding.pry
             end
             # binding.pry
             #First 3 times are useless and returns nil
