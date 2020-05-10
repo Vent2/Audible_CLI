@@ -18,13 +18,13 @@ class AudibleCli::CLI
     #def grab_first_page
     #end
 
-    def grab_second_page_url
-      AudibleCli::Series.all.each do |series|
-      # binding.pry
-      AudibleCli::Scraper.second_series(series)
-      # binding.pry
-      end
-    end
+    # def grab_second_page_url
+    #   AudibleCli::Series.all.each do |series|
+    #   # binding.pry
+    #   AudibleCli::Scraper.second_series(series)
+    #   # binding.pry
+    #   end
+    # end
 
     def list_series
         puts <<-DOC.gsub /^\s*/, '' 
@@ -35,21 +35,31 @@ class AudibleCli::CLI
 
         def new_series
           AudibleCli::Series.all.each_with_index do |series, i|
-        # @series.each.with_index(1) do |series, i|
-         puts "#{i}. #{series.title}"
+         puts "#{i+1}. #{series.title}"
+        #  binding.pry
           end
         end
-
-
+#
     def menu
+        # grab_second_page_url
+        # binding.pry
         input = nil
       while input != "exit"
-        puts "Enter the number of the series you want to know more about or type list to see the series again or type exit:"
+        puts "Enter the number of the series you want to know more about or type list or exit:"
         input = gets.strip.downcase
+        system("clear")
         
-        if input.to_i > 0 && input.to_i <19 #maybe 18
-            the_series = @series[input.to_i-1]
-            puts "#{the_series.title} - #{the_series.url}" #How to go to second scrape
+        if input.to_i > 0 && input.to_i < 7
+          the_series = AudibleCli::Series.find_by_index(input.to_i-1)
+          # binding.pry
+            puts "#{the_series.url_title}"
+            puts ""
+            puts "#{the_series.summary}"
+            puts ""
+            puts "You could get the first book in this series for #{the_series.price}"
+            puts ""
+            puts "Why don't you check it out!(#{the_series.url})"
+             #How to go to second scrape
         elsif input == "list"                              #Then add summary,price and maybe also add url to actual link 
             list_series
         else 
@@ -64,5 +74,4 @@ class AudibleCli::CLI
         Happy reading!
         DOC
     end
-  # end 
 end
