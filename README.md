@@ -1,8 +1,6 @@
 # AudibleCli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/audible_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+For all the Sci-Fi lovers out there I created a gem that scrapes the website for Audible. It will them return you a list of the top Sci-Fi series and then if any of those peak your interest you can find a summary on it.Also the price and url of the first book if you want to give it a try.
 
 ## Installation
 
@@ -22,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To start the app while you're in the Audible_Cli type into the terminal ./bin/audible and that should run the app.
+After a menu prompt will apear giving you some options og series you can check out. After finding what series you would like to check out put the corresponding number input to find out more.You can also type list into the terminal if you have forgotten the name of a series. Lastly you can type exit to end the app.
 
 ## Development
 

@@ -27,9 +27,22 @@ class AudibleCli::CLI
     # end
 
     def list_series
+        
         puts <<-DOC.gsub /^\s*/, '' 
-        Ready to read a great book?
-        Here are a couple of series to get you started:
+        ██████╗░███████╗░█████╗░██████╗░██╗░░░██╗  ████████╗░█████╗░  ██████╗░███████╗░█████╗░██████╗░  ░█████╗░
+        ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗░██╔╝  ╚══██╔══╝██╔══██╗  ██╔══██╗██╔════╝██╔══██╗██╔══██╗  ██╔══██╗
+        ██████╔╝█████╗░░███████║██║░░██║░╚████╔╝░  ░░░██║░░░██║░░██║  ██████╔╝█████╗░░███████║██║░░██║  ███████║
+        ██╔══██╗██╔══╝░░██╔══██║██║░░██║░░╚██╔╝░░  ░░░██║░░░██║░░██║  ██╔══██╗██╔══╝░░██╔══██║██║░░██║  ██╔══██║
+        ██║░░██║███████╗██║░░██║██████╔╝░░░██║░░░  ░░░██║░░░╚█████╔╝  ██║░░██║███████╗██║░░██║██████╔╝  ██║░░██║
+        ╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░  ░░░╚═╝░░░░╚════╝░  ╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░  ╚═╝░░╚═╝
+
+        ░██████╗░██████╗░███████╗░█████╗░████████╗  ██████╗░░█████╗░░█████╗░██╗░░██╗░█████╗░
+        ██╔════╝░██╔══██╗██╔════╝██╔══██╗╚══██╔══╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██╔══██╗
+        ██║░░██╗░██████╔╝█████╗░░███████║░░░██║░░░  ██████╦╝██║░░██║██║░░██║█████═╝░╚═╝███╔╝
+        ██║░░╚██╗██╔══██╗██╔══╝░░██╔══██║░░░██║░░░  ██╔══██╗██║░░██║██║░░██║██╔═██╗░░░░╚══╝░
+        ╚██████╔╝██║░░██║███████╗██║░░██║░░░██║░░░  ██████╦╝╚█████╔╝╚█████╔╝██║░╚██╗░░░██╗░░
+        ░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝░░░╚═╝░░░  ╚═════╝░░╚════╝░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░
+        Here is a couple of series to get you started:
         DOC
     end
 
@@ -57,10 +70,10 @@ class AudibleCli::CLI
             puts "#{the_series.summary}"
             puts ""
             puts "You could get the first book in this series for #{the_series.price}"
+            puts "Or if you would like to check it out without investing to much money to begin with you can try the 30 day free trail."
             puts ""
             puts "Why don't you check it out!(#{the_series.url})"
-             #How to go to second scrape
-        elsif input == "list"                              #Then add summary,price and maybe also add url to actual link 
+        elsif input == "list"
             list_series
         else 
           puts "Not sure what you want, type list or exit:"

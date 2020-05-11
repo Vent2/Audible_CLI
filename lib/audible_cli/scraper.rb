@@ -21,7 +21,9 @@ class AudibleCli::Scraper
             # binding.pry
             doc.css('div.adbl-main').each do |series|
             new_series.url_title = series.css('h1.bc-heading').text.strip
-            new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip
+            new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("â", "").replace(/^"|"$/g, '')
+            # new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("'", "").gsub("â", "")
+            # binding.pry
             #figure how to remove all the \u and \n
             new_series.price = series.css('span.bc-text.bc-size-base.bc-color-base')[1].text.strip
             # binding.pry
