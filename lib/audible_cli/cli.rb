@@ -2,7 +2,7 @@ class AudibleCli::CLI
 
     def call
       AudibleCli::Scraper.scrape_first_page
-      list_series
+      intro
       new_series
       menu
       goodbye
@@ -26,7 +26,7 @@ class AudibleCli::CLI
     #   end
     # end
 
-    def list_series
+    def intro
         
         puts <<-DOC.gsub /^\s*/, '' 
         ██████╗░███████╗░█████╗░██████╗░██╗░░░██╗  ████████╗░█████╗░  ██████╗░███████╗░█████╗░██████╗░  ░█████╗░
@@ -70,7 +70,7 @@ class AudibleCli::CLI
             puts ""
             puts "Why don't you check it out!(#{the_series.url})"
         elsif input == "list"
-            list_series
+            new_series
         else 
           puts "Not sure what you want, type list or exit:"
         end
