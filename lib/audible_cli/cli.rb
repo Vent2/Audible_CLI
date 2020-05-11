@@ -49,13 +49,10 @@ class AudibleCli::CLI
         def new_series
           AudibleCli::Series.all.each_with_index do |series, i|
          puts "#{i+1}. #{series.title}"
-        #  binding.pry
           end
         end
-#
+
     def menu
-        # grab_second_page_url
-        # binding.pry
         input = nil
       while input != "exit"
         puts "Enter the number of the series you want to know more about or type list or exit:"
@@ -64,7 +61,6 @@ class AudibleCli::CLI
         
         if input.to_i > 0 && input.to_i < 7
           the_series = AudibleCli::Series.find_by_index(input.to_i-1)
-          # binding.pry
             puts "#{the_series.url_title}"
             puts ""
             puts "#{the_series.summary}"

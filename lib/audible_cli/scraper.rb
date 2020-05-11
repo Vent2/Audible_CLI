@@ -1,5 +1,4 @@
 class AudibleCli::Scraper
-    # series = []
 
     def self.scrape_first_page
         doc = Nokogiri::HTML(open("https://www.audible.com/ep/series-science-fiction-fantasy-epic"))
@@ -18,14 +17,10 @@ class AudibleCli::Scraper
 
     def self.second_series(new_series)
             doc = Nokogiri::HTML(open(new_series.url))
-            # binding.pry
             doc.css('div.adbl-main').each do |series|
             new_series.url_title = series.css('h1.bc-heading').text.strip
             new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("'", "").gsub("â", "")
-            # binding.pry
-            #figure how to remove all the \u and \n
             new_series.price = series.css('span.bc-text.bc-size-base.bc-color-base')[1].text.strip
-            # binding.pry
             end
     end
 end
