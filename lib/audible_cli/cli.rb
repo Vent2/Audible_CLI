@@ -1,6 +1,7 @@
 class AudibleCli::CLI
 
     def call
+      waiting_message
       AudibleCli::Scraper.scrape_first_page
       intro
       new_series
@@ -11,20 +12,13 @@ class AudibleCli::CLI
     #/////////////////////////////////////////////////////
     #First menu gives you the series in numbered order
     #You then choose a series by typing in number
-    #second Menu gives you a seummary of the series and the price of the first book
-    #[Bonus] add url incase the user wants to go to audible.com and purchase the book
+    #second Menu gives you a summary of the series and the price of the first book
     #/////////////////////////////////////////////////////
     
-    #def grab_first_page
-    #end
 
-    # def grab_second_page_url
-    #   AudibleCli::Series.all.each do |series|
-    #   # binding.pry
-    #   AudibleCli::Scraper.second_series(series)
-    #   # binding.pry
-    #   end
-    # end
+    def waiting_message
+      puts "One moment while I scrape..."
+    end
 
     def intro
         
@@ -42,6 +36,7 @@ class AudibleCli::CLI
         ██║░░╚██╗██╔══██╗██╔══╝░░██╔══██║░░░██║░░░  ██╔══██╗██║░░██║██║░░██║██╔═██╗░░░░╚══╝░
         ╚██████╔╝██║░░██║███████╗██║░░██║░░░██║░░░  ██████╦╝╚█████╔╝╚█████╔╝██║░╚██╗░░░██╗░░
         ░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝░░░╚═╝░░░  ╚═════╝░░╚════╝░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░
+
         Here is a couple of series to get you started:
         DOC
     end
@@ -59,7 +54,7 @@ class AudibleCli::CLI
         input = gets.strip.downcase
         system("clear")
         
-        if input.to_i > 0 && input.to_i < 7
+        if input.to_i > 0 && input.to_i <= AudibleCli::Series.all.length
           the_series = AudibleCli::Series.find_by_index(input.to_i-1)
             puts "#{the_series.url_title}"
             puts ""

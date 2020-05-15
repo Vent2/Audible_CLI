@@ -11,7 +11,7 @@ class AudibleCli::Scraper
             new_series = AudibleCli::Series.new(title = titles[0], url = "https://www.audible.com#{urls[0]}")
             second_series(new_series)
             end
-            #First 3 times are useless and returns nil
+            #First 3 times are useless and returns nil as title. Also after the series you will get a bunch of titles with nil.
         end 
     end
 
@@ -19,7 +19,7 @@ class AudibleCli::Scraper
             doc = Nokogiri::HTML(open(new_series.url))
             doc.css('div.adbl-main').each do |series|
             new_series.url_title = series.css('h1.bc-heading').text.strip
-            new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("'", "").gsub("â", "")
+            new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("â", "")
             new_series.price = series.css('span.bc-text.bc-size-base.bc-color-base')[1].text.strip
             end
     end
