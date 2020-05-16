@@ -17,7 +17,7 @@ class AudibleCli::Scraper
 
     def self.second_series(new_series)
             doc = Nokogiri::HTML(open(new_series.url))
-            doc.css('div.adbl-main').each do |series|
+            doc.css('div.adbl-main').map do |series|
             new_series.url_title = series.css('h1.bc-heading').text.strip
             new_series.summary = series.css('div.bc-box.bc-box-padding-none.bc-spacing-small').text.strip.gsub("Â","").gsub("â", "")
             new_series.price = series.css('span.bc-text.bc-size-base.bc-color-base')[1].text.strip

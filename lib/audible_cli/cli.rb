@@ -42,9 +42,10 @@ class AudibleCli::CLI
     end
 
         def new_series
-          AudibleCli::Series.all.each_with_index do |series, i|
-         puts "#{i+1}. #{series.title}"
+          AudibleCli::Series.all.sort_by{|series| series.title}.each_with_index do |series, i|
+            puts "#{i+1}. #{series.title}"
           end
+          
         end
 
     def menu
