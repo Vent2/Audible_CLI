@@ -42,16 +42,18 @@ class AudibleCli::CLI
     end
 
         def new_series
-          AudibleCli::Series.all.sort_by{|series| series.title}.each_with_index do |series, i|
+          AudibleCli::Series.all.sort_by!{|series| series.title}.each_with_index do |series, i|
             puts "#{i+1}. #{series.title}"
           end
-          
         end
 
     def menu
         input = nil
       while input != "exit"
-        puts "Enter the number of the series you want to know more about or type list or exit:"
+        puts "|~~~~~~~~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~|"
+        puts "|    Enter No.     ||       List       ||       Exit       |"
+        puts "|~~~~~~~~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~|"
+
         input = gets.strip.downcase
         system("clear")
         
